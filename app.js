@@ -47,6 +47,7 @@ app.post('/api/notes', (req, res) => {
     res.status(201).json(note);
 });
 
-const PORT = 3001;
-app.listen(PORT);
-console.log(`app levantada en el puerto ${PORT}`);
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+    console.log(`app levantada en el puerto ${PORT}`);
+});
