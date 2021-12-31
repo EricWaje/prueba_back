@@ -24,14 +24,19 @@ app.get('/api/products', (req, res) => {
 });
 
 app.get('/api/products/:id', (req, res) => {
-    const id = req.params.id;
-    const product = products.find((prod) => prod.id === parseInt(id));
-
-    if (product) {
-        res.json(product);
-    } else {
-        res.status(404).end();
-    }
+    const { id } = req.params;
+    Product.findById(id)
+        .then((prod) => {
+            if (prod) {
+                res.json(prod);
+            } else {
+                res.status(404).end();
+            }
+        })
+        .catch((error) => {
+            console.log(error);
+            res.status(400).end();
+        });
 });
 
 app.delete('/api/notes/:id', (req, res) => {
@@ -40,16 +45,18 @@ app.delete('/api/notes/:id', (req, res) => {
     res.status(204).end();
 });
 
-app.post('/api/notes', (req, res) => {
-    const note = req.body;
-    const newNote = {
-        id: Math.random().toString(),
-        content: 'Nueva nota',
-        important: true,
-    };
+app.post('/api/products', (req, res) => {
+    const product = req.body;
 
-    notes = [...notes, newNote];
-    res.status(201).json(note);
+    const newProduct = new Product({
+        name: product.name,
+        price: product.price,
+        stock: product.stock,
+    });
+
+    newProduct.save().then((saveProduct) => {
+        res.json(saveProduct);
+    });
 });
 
 const PORT = process.env.PORT || 3001;
