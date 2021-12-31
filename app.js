@@ -1,3 +1,5 @@
+require('./mongo');
+
 const express = require('express');
 const cors = require('cors');
 
@@ -6,11 +8,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-let notes = [
-    { id: 1, content: 'primer contenido', important: true },
-    { id: 2, content: 'segundo contenido', important: true },
-    { id: 3, content: 'tercer contenido', important: false },
-];
+const Product = require('./models/Product');
 
 app.get('/', (req, res) => {
     res.send('<h1>holis</h1>');
@@ -18,11 +16,11 @@ app.get('/', (req, res) => {
 
 console.log('prueba');
 
-app.get('/api/notes', (req, res) => {
+app.get('/api/products', (req, res) => {
     res.json(notes);
 });
 
-app.get('/api/notes/:id', (req, res) => {
+app.get('/api/products/:id', (req, res) => {
     const id = req.params.id;
     const nota = notes.find((note) => note.id === parseInt(id));
 
