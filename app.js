@@ -10,22 +10,24 @@ app.use(express.json());
 
 const Product = require('./models/Product');
 
+let products = [];
+
 app.get('/', (req, res) => {
     res.send('<h1>holis</h1>');
 });
 
-console.log('prueba');
-
 app.get('/api/products', (req, res) => {
-    res.json(notes);
+    Product.find({}).then((prod) => {
+        res.json(prod);
+    });
 });
 
 app.get('/api/products/:id', (req, res) => {
     const id = req.params.id;
-    const nota = notes.find((note) => note.id === parseInt(id));
+    const product = products.find((prod) => prod.id === parseInt(id));
 
-    if (nota) {
-        res.json(nota);
+    if (product) {
+        res.json(product);
     } else {
         res.status(404).end();
     }
