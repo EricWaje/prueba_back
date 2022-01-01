@@ -11,10 +11,8 @@ app.use(express.json());
 
 const Product = require('./models/Product');
 
-let products = [];
-
 app.get('/', (req, res) => {
-    res.send('<h1>holis</h1>');
+    res.send('<h1>Api de Eric</h1>');
 });
 
 app.get('/api/products', (req, res) => {
@@ -39,10 +37,33 @@ app.get('/api/products/:id', (req, res) => {
         });
 });
 
-app.delete('/api/notes/:id', (req, res) => {
-    const id = req.params.id;
-    notes = notes.filter((note) => note.id !== parseInt(id));
-    res.status(204).end();
+app.put('/api/products/:id', (req, res) => {
+    const { id } = req.params;
+    const product = req.body;
+
+    const newProductInfo = {
+        name: product.name,
+        price: product.price,
+        stock: product.stock,
+        img: product.img,
+    };
+
+    Product.findByIdAndUpdate(id, newProductInfo, { new: true }).then(
+        (response) => {
+            res.json(response);
+        }
+    );
+});
+
+app.delete('/api/products/:id', (req, res) => {
+    const { id } = req.params;
+    Product.findByIdAndDelete(id)
+        .then((response) => {
+            res.status(204).end();
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 });
 
 app.post('/api/products', (req, res) => {
@@ -52,6 +73,7 @@ app.post('/api/products', (req, res) => {
         name: product.name,
         price: product.price,
         stock: product.stock,
+        img: product.img,
     });
 
     newProduct.save().then((saveProduct) => {
