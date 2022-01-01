@@ -21,7 +21,7 @@ app.get('/api/products', (req, res) => {
     });
 });
 
-app.get('/api/products/:id', (req, res) => {
+/* app.get('/api/products/:id', (req, res) => {
     const { id } = req.params;
     Product.findById(id)
         .then((prod) => {
@@ -79,7 +79,7 @@ app.post('/api/products', (req, res) => {
     newProduct.save().then((saveProduct) => {
         res.json(saveProduct);
     });
-});
+}); */
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
