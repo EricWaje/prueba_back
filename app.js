@@ -1,5 +1,5 @@
 require('dotenv').config();
-require('./mongo');
+//require('./mongo');
 
 const express = require('express');
 const cors = require('cors');
@@ -9,16 +9,38 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const Product = require('./models/Product');
+//const Product = require('./models/Product');
+
+let products = [
+    {
+        id: 1,
+        name: 'mochila',
+        price: 200,
+        stock: 10,
+    },
+    {
+        id: 3,
+        name: 'gorra',
+        price: 200,
+        stock: 10,
+    },
+    {
+        id: 3,
+        name: 'bufanda',
+        price: 200,
+        stock: 10,
+    },
+];
 
 app.get('/', (req, res) => {
     res.send('<h1>Api de Eric</h1>');
 });
 
 app.get('/api/products', (req, res) => {
-    Product.find({}).then((prod) => {
+    /* Product.find({}).then((prod) => {
         res.json(prod);
-    });
+    }); */
+    res.json(products);
 });
 
 /* app.get('/api/products/:id', (req, res) => {
