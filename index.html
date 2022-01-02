@@ -4,6 +4,12 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap"
+            rel="stylesheet"
+        />
         <title>Api</title>
     </head>
     <style>
@@ -11,6 +17,7 @@
             box-sizing: border-box;
             margin: 0px;
             padding: 0px;
+            font-family: 'Roboto', sans-serif;
         }
         header {
             background-color: #181818;
@@ -26,20 +33,28 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: rgb(212, 132, 212);
+            background-color: rgb(245, 245, 245);
         }
         h2 {
             text-align: center;
-            color: #f5f5f5;
+            color: #181818;
             margin-bottom: 15px;
         }
         h3 {
             text-align: center;
-            color: #f5f5f5;
-            font-weight: bold;
+            color: #181818;
+            font-weight: 500;
         }
         a {
-            color: rgb(248, 233, 17);
+            color: #181818;
+            border-bottom: 2px solid rgb(255, 152, 0);
+            text-decoration: none;
+            font-weight: 200;
+            transition: all 0.2s ease-in-out;
+        }
+        a:hover {
+            color: rgb(255, 152, 0);
+            border-bottom: none;
         }
         div {
             background-color: #181818;
@@ -58,6 +73,7 @@
         h4,
         h5 {
             color: #f5f5f5;
+            font-weight: 300;
         }
         h5 {
             text-align: center;
@@ -66,6 +82,21 @@
             background-color: #181818;
             padding: 20px 0px;
         }
+        .put {
+            color: rgb(255, 152, 0);
+            font-weight: 500;
+        }
+        .post {
+            color: rgb(94, 94, 245);
+            font-weight: 500;
+        }
+        .delete {
+            font-weight: 500;
+            color: rgb(243, 22, 22);
+        }
+        .get {
+            font-weight: 500;
+        }
     </style>
     <body>
         <header>
@@ -73,7 +104,6 @@
         </header>
         <main>
             <section>
-                <h2>REST</h2>
                 <h3>
                     Base URL:
                     <a
@@ -91,25 +121,25 @@
                 </div> -->
                 <div>
                     <h4>
-                        <span>GET</span
+                        <span class="get">GET</span
                         >https://hidden-beach-96657.herokuapp.com/api/products
                     </h4>
                 </div>
                 <div>
                     <h4>
-                        <span>POST</span
+                        <span class="post">POST</span
                         >https://hidden-beach-96657.herokuapp.com/api/products
                     </h4>
                 </div>
                 <div>
                     <h4>
-                        <span style="color: red">DELETE</span
+                        <span class="put">PUT</span
                         >https://hidden-beach-96657.herokuapp.com/api/products/:id
                     </h4>
                 </div>
                 <div>
                     <h4>
-                        <span>PUT</span
+                        <span class="delete">DELETE</span
                         >https://hidden-beach-96657.herokuapp.com/api/products/:id
                     </h4>
                 </div>
