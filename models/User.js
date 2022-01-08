@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+/* const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
     username: String,
@@ -24,3 +24,4 @@ userSchema.set('toJSON', {
 const User = model('User', userSchema);
 
 module.exports = User;
+ */

@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+/* const bcrypt = require('bcrypt');
 
 const User = require('../models/User');
 
@@ -31,3 +31,4 @@ const allUsers = async (req, res) => {
 };
 
 module.exports = { create, allUsers };
+ */

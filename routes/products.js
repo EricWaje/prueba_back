@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const router = Router();
-const userExtractor = require('../middlewares/userExtractor');
+//const userExtractor = require('../middlewares/userExtractor');
 
 const {
     all,
@@ -12,8 +12,8 @@ const {
 
 router.get('/', all);
 router.get('/:id', single);
-router.post('/', userExtractor, create);
-router.put('/:id', userExtractor, update);
-router.delete('/:id', userExtractor, deleteProd);
+router.post('/', create);
+router.put('/:id', update);
+router.delete('/:id', deleteProd);
 
 module.exports = router;
