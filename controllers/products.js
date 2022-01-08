@@ -1,6 +1,4 @@
-const jwt = require('jsonwebtoken');
 const Product = require('../models/Product');
-const User = require('../models/User');
 
 const all = async (req, res) => {
     try {
@@ -68,16 +66,11 @@ const create = async (req, res) => {
     try {
         const { name, price, stock, img } = req.body;
 
-        const { userId } = req;
-
-        const user = await User.findById(userId);
-
         const newProduct = new Product({
             name,
             price,
             stock,
             img,
-            user: user._id,
         });
 
         await newProduct.save().then((saveProduct) => {
