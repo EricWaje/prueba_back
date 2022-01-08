@@ -5,6 +5,10 @@ const productSchema = new Schema({
     price: Number,
     stock: Number,
     img: String,
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+    },
 });
 
 productSchema.set('toJSON', {

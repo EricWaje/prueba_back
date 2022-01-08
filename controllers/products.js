@@ -1,4 +1,6 @@
+const jwt = require('jsonwebtoken');
 const Product = require('../models/Product');
+const User = require('../models/User');
 
 const all = async (req, res) => {
     try {
@@ -64,13 +66,18 @@ const deleteProd = async (req, res) => {
 
 const create = async (req, res) => {
     try {
-        const product = req.body;
+        const { name, price, stock, img } = req.body;
+
+        const { userId } = req;
+
+        const user = await User.findById(userId);
 
         const newProduct = new Product({
-            name: product.name,
-            price: product.price,
-            stock: product.stock,
-            img: product.img,
+            name,
+            price,
+            stock,
+            img,
+            user: user._id,
         });
 
         await newProduct.save().then((saveProduct) => {
