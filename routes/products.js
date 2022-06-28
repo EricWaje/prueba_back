@@ -2,18 +2,21 @@ const { Router } = require('express');
 const router = Router();
 //const userExtractor = require('../middlewares/userExtractor');
 
-const {
+/* const {
     all,
+    allCategory,
     single,
     update,
     deleteProd,
     create,
-} = require('../controllers/products');
+} = require('../controllers/products'); */
+const { all, allCategory, single } = require('../controllers/products');
 
 router.get('/', all);
-router.get('/:id', single);
-router.post('/', create);
+router.get('/category/:category', allCategory);
+router.get('/detail/:id', single);
+/* router.post('/', create);
 router.put('/:id', update);
-router.delete('/:id', deleteProd);
+router.delete('/:id', deleteProd); */
 
 module.exports = router;

@@ -10,6 +10,17 @@ const all = async (req, res) => {
     }
 };
 
+const allCategory = async (req, res) => {
+    try {
+        const { category } = req.params;
+        Product.find({}).then((prod) => {
+            res.json(prod);
+        });
+    } catch (error) {
+        console.error(error);
+    }
+};
+
 const single = async (req, res) => {
     try {
         const { id } = req.params;
@@ -81,4 +92,5 @@ const create = async (req, res) => {
     }
 };
 
-module.exports = { all, single, update, deleteProd, create };
+//module.exports = { all, allCategory, single, update, deleteProd, create };
+module.exports = { all, allCategory, single };
