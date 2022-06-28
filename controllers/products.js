@@ -13,7 +13,7 @@ const all = async (req, res) => {
 const allCategory = async (req, res) => {
     try {
         const { category } = req.params;
-        Product.find({}).then((prod) => {
+        Product.find({ categoria: category }).then((prod) => {
             res.json(prod);
         });
     } catch (error) {

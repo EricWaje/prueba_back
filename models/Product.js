@@ -5,6 +5,7 @@ const productSchema = new Schema({
     price: Number,
     stock: Number,
     img: String,
+    categoria: String,
 });
 
 productSchema.set('toJSON', {
