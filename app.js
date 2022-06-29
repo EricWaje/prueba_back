@@ -11,11 +11,13 @@ app.use(express.json());
 
 const inicio = require('./routes/index');
 const products = require('./routes/products');
+const orders = require('./routes/orders');
 //const users = require('./routes/users');
 //const login = require('./routes/login');
 
 app.use('/', inicio);
 app.use('/api/products', products);
+app.use('/api/orders', orders);
 //app.use('/api/users', users);
 //app.use('/api/login', login);
 
