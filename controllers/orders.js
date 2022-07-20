@@ -2,14 +2,9 @@ const Order = require('../models/Order');
 
 const postOrder = async (req, res) => {
     try {
-        const { name, price, stock, img, cantidad, total, user, phone } =
-            req.body;
+        const { cart, total, user, phone } = req.body;
         const newOrder = new Order({
-            name,
-            price,
-            stock,
-            img,
-            cantidad,
+            cart,
             total,
             user,
             phone,
